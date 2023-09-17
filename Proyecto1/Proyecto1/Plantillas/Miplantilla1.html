@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+    <body>
+        {% include "superior/barra.html"%}
+        <h1 style="color: red">
+            Hola alumnos estamos viendo nuestra primera plantilla con Django
+        </h1>
+        {# si bien podemos poner estructuras de control en la plantilla, no es lo mas adecuado y deberiamos de poner todos los que pudiesemos en views #}
+        {% if nombre_persona == 'Juan Pedro' %}
+            <p> El curso lo imparte el profesor titular</p>
+        {% else %}
+            <p> El curso lo imparte el profesor suplente</p>
+        {% endif %}
+
+        <p> el nombre del proefsor es: {{nombre_persona.upper}} {{apellido_persona.upper}}</p>
+        <p> Estamos viendo el tema de las plantillas a fecha de: {{momento_actual.day}}/{{momento_actual.month}}/{{momento_actual.year}}</p>
+        <p><strong> TEMAS DEL CURSO </strong></p>
+        
+        <p> 
+            <ul> 
+            {% if temas %}
+
+                {% for elTema in temas %}
+                    <li>{{elTema|first|lower}} </li>
+                {% endfor %}
+            {% else %}
+                <p>No hay elementos que mostrar</p>
+            {% endif %}
+          
+            
+            </ul>  
+        </p>
+      
+    </body>
+
+</html>
